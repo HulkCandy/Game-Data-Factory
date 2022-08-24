@@ -4,9 +4,9 @@ from tkcalendar import Calendar
 from tkinter import messagebox
 from datetime import timedelta
 import tkcalendar
-# import EGM
 
 
+#input the week name
 global dates
 window = Tk()
 
