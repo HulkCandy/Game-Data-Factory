@@ -1,10 +1,12 @@
 from tkinter import *
 import re
 from tkcalendar import Calendar
+import time
 from tkinter import messagebox
 from datetime import timedelta
 import tkcalendar
 from EGM import EGM_account,EGM_Players
+from EGM_Machine_Data_Inte import EGM_inte_machinedata
 
 #validation
 def validation():
@@ -12,7 +14,7 @@ def validation():
     if EGM==1:
         msg = 'EGM data is processing..........'
         messagebox.showinfo('message', msg)
-
+        start = time.time()
         msg = 'EGM Account data is processing..... '
         messagebox.showinfo('message', msg)
         EGM_account(dates)
@@ -23,10 +25,20 @@ def validation():
         EGM_Players(dates)
         msg = 'EGM Account Player is done'
         messagebox.showinfo('message', msg)
-
-
-        msg = 'EGM all done!!'
+        msg = 'EGM data is integrating......'
         messagebox.showinfo('message', msg)
+        msg = 'EGM floor analysis data is integrating......'
+        messagebox.showinfo('message', msg)
+        EGM_inte_machinedata()
+        msg = 'EGM floor analysis data is done.'
+        messagebox.showinfo('message', msg)
+        # msg = 'EGM VLD data is done......'
+        # messagebox.showinfo('message', msg)
+        end = time.time()
+        lengh=end-start
+        msg = "{} {} {}".format("All done, spend:", lengh,"s")
+        messagebox.showinfo('message', msg)
+
 
 
 
