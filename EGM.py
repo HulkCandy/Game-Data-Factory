@@ -95,7 +95,7 @@ def EGM_account(dates):
 
     # print(data_egm_list)
     final_egm_data = pd.concat(data_egm_list)
-    print(final_egm_data.dtypes)
+    # print(final_egm_data.dtypes)
     final_egm_data['Accounting Date'] = pd.to_datetime(final_egm_data['Accounting Date']).dt.date
     for col in final_egm_data.columns[8:]:
         final_egm_data[col] = pd.to_numeric(final_egm_data[col], errors='coerce')
@@ -117,14 +117,14 @@ def EGM_account(dates):
     source_filename = account_source_file_name_full
     wb1 = xl.load_workbook(filename=source_filename)
     ws1 = wb1.worksheets[0]
-    print(source_filename)
-    print(wb1.sheetnames)
+    # print(source_filename)
+    # print(wb1.sheetnames)
 
 
     # # opening the destination excel file
     account_target_file_name = EGM_template + week + '.xlsx'
     account_target_file_name_loc = os.path.join(EGM_teplate_loc, account_target_file_name)
-    print(account_target_file_name_loc)
+    # print(account_target_file_name_loc)
     wb2 = xl.load_workbook(filename=account_target_file_name_loc)
     ws2=wb2['Machine Data - Source']
     # target_list1 = os.listdir(EGM_teplate_loc)
@@ -177,7 +177,7 @@ def EGM_Players(dates):
 
     date_list = ["Player_{0}.txt".format(date) for date in date_list]
 
-    print(date_list)
+    # print(date_list)
 
 
     for i in range(len(date_list)):
@@ -258,14 +258,14 @@ def EGM_Players(dates):
     source_filename = account_source_file_name_full
     wb1 = xl.load_workbook(filename=source_filename)
     ws1 = wb1.worksheets[0]
-    print(source_filename)
-    print(wb1.sheetnames)
+    # print(source_filename)
+    # print(wb1.sheetnames)
 
 
     # # opening the destination excel file
     account_target_file_name = EGM_template + week + '.xlsx'
     account_target_file_name_loc = os.path.join(EGM_teplate_loc, account_target_file_name)
-    print(account_target_file_name_loc)
+    # print(account_target_file_name_loc)
     wb2 = xl.load_workbook(filename=account_target_file_name_loc)
     ws2=wb2['Player Data - Source']
     # target_list1 = os.listdir(EGM_teplate_loc)
@@ -288,10 +288,10 @@ def EGM_Players(dates):
     # saving the destination excel file
     wb2.save(account_target_file_name_loc)
 
-def EGM_integrat(weekly_template_EGM):
-    data = pd.read_excel(weekly_template_EGM,sheet_name='Uncarded Data - Report',header=None)
-    df = pd.DataFrame(data)
-    print(df)
+# def EGM_integrat(weekly_template_EGM):
+#     data = pd.read_excel(weekly_template_EGM,sheet_name='Uncarded Data - Report',header=None)
+#     df = pd.DataFrame(data)
+#     print(df)
 
 
 
