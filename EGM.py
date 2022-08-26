@@ -8,10 +8,10 @@ import openpyxl as xl
 import xlsxwriter
 
 
-def validat(dates):
-    dates=dates
-    print("function is working")
-    print(dates)
+# def validat(dates):
+#     dates=dates
+#     print("function is working")
+#     print(dates)
 
 
 # convert date to actual date
@@ -19,14 +19,13 @@ def EGM_account(dates):
     account_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account'
     account_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account-test'
     dates=dates
-    original=account_original
-    target=account_target
     EGM_teplate_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
     EGM_template = 'Data Templates - EGM - WK '
     week = '34'
     weekly_template=EGM_template+week+".xlsx"
     weekly_template_EGM=os.path.join(EGM_teplate_loc, weekly_template)
-
+    original=account_original
+    target=account_target
     for i in range(len(dates)):
         dates[i] = datetime.strptime(dates[i], '%Y-%m-%d')
         dates[i] = pd.to_datetime(dates[i]) + pd.DateOffset(days=1)

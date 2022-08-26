@@ -4,15 +4,32 @@ from tkcalendar import Calendar
 from tkinter import messagebox
 from datetime import timedelta
 import tkcalendar
-from EGM import validat
+from EGM import EGM_account,EGM_Players
 
 #validation
 def validation():
     EGM=CheckVar2.get()
     if EGM==1:
-        msg = 'EGM is checked'
+        msg = 'EGM data is processing..........'
         messagebox.showinfo('message', msg)
-        validat(dates)
+
+        msg = 'EGM Account data is processing..... '
+        messagebox.showinfo('message', msg)
+        EGM_account(dates)
+        msg = 'EGM Account data is done'
+        messagebox.showinfo('message', msg)
+        msg = 'EGM Player data is processing......'
+        messagebox.showinfo('message', msg)
+        EGM_Players(dates)
+        msg = 'EGM Account Player is done'
+        messagebox.showinfo('message', msg)
+
+
+        msg = 'EGM all done!!'
+        messagebox.showinfo('message', msg)
+
+
+
 
 
 
