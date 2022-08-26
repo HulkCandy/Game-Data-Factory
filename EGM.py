@@ -8,12 +8,25 @@ import openpyxl as xl
 import xlsxwriter
 
 
+def validat(dates):
+    dates=dates
+    print("function is working")
+    print(dates)
+
 
 # convert date to actual date
-def EGM_account(original,target,dates):
+def EGM_account(dates):
+    account_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account'
+    account_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account-test'
     dates=dates
     original=account_original
     target=account_target
+    EGM_teplate_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
+    EGM_template = 'Data Templates - EGM - WK '
+    week = '34'
+    weekly_template=EGM_template+week+".xlsx"
+    weekly_template_EGM=os.path.join(EGM_teplate_loc, weekly_template)
+
     for i in range(len(dates)):
         dates[i] = datetime.strptime(dates[i], '%Y-%m-%d')
         dates[i] = pd.to_datetime(dates[i]) + pd.DateOffset(days=1)
@@ -88,7 +101,10 @@ def EGM_account(original,target,dates):
     for col in final_egm_data.columns[8:]:
         final_egm_data[col] = pd.to_numeric(final_egm_data[col], errors='coerce')
 
-    # print(final_egm_data)
+    account_source_file_name = 'test.xlsx'
+    account_source_file_name_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
+    player_source_file_name = 'player test.xlsx'
+
     account_source_file_name_full = os.path.join(account_source_file_name_loc, account_source_file_name)
     final_egm_data.to_excel(account_source_file_name_full, header=False, index=False)
     # data clean and concat end
@@ -134,10 +150,18 @@ def EGM_account(original,target,dates):
 
 
 
-def EGM_Players(player_original, player_target,dates):
+def EGM_Players(dates):
+    player_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players'
+    player_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players - test'
     dates = dates
     original=player_original
     target=player_target
+    EGM_teplate_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
+    EGM_template = 'Data Templates - EGM - WK '
+    week = '34'
+    weekly_template=EGM_template+week+".xlsx"
+    weekly_template_EGM=os.path.join(EGM_teplate_loc, weekly_template)
+
     # for i in range(len(dates)):
     #     dates[i] = datetime.strptime(dates[i], '%Y-%m-%d')
     #     dates[i] = pd.to_datetime(dates[i]) + pd.DateOffset(days=1)
@@ -218,7 +242,10 @@ def EGM_Players(player_original, player_target,dates):
     for col in final_egm_data.columns[6:12]:
         final_egm_data[col] = pd.to_numeric(final_egm_data[col], errors='coerce')
 
-    # print(final_egm_data)
+    account_source_file_name = 'test.xlsx'
+    account_source_file_name_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
+    player_source_file_name = 'player test.xlsx'
+
     account_source_file_name_full = os.path.join(account_source_file_name_loc, player_source_file_name)
     final_egm_data.to_excel(account_source_file_name_full, header=False, index=False)
     # data clean and concat end
@@ -288,25 +315,27 @@ def EGM_integrat(weekly_template_EGM):
 
 
 
-if __name__ == '__main__':
-    dates = ['2022-08-08', '2022-08-09', '2022-08-10', '2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14']
-    account_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account'
-    account_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account-test'
-    player_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players'
-    player_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players - test'
-    date_list = []
-    EGM_teplate_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
-    EGM_template = 'Data Templates - EGM - WK '
-    week = '34'
-    weekly_template=EGM_template+week+".xlsx"
-    weekly_template_EGM=os.path.join(EGM_teplate_loc, weekly_template)
+# if __name__ == '__main__':
+
+    # dates = ['2022-08-08', '2022-08-09', '2022-08-10', '2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14']
+    # account_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account'
+    # account_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Account-test'
+    # player_original = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players'
+    # player_target = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\Players - test'
+    # date_list = []
+    # EGM_teplate_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
+    # EGM_template = 'Data Templates - EGM - WK '
+    # week = '34'
+    # weekly_template=EGM_template+week+".xlsx"
+    # weekly_template_EGM=os.path.join(EGM_teplate_loc, weekly_template)
 
     account_source_file_name = 'test.xlsx'
     account_source_file_name_loc = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all'
     player_source_file_name = 'player test.xlsx'
+
     # EGM_account(account_original,account_target,dates)
     # EGM_Players(player_original, player_target,dates)
-    EGM_integrat(weekly_template_EGM)
+    # EGM_integrat(weekly_template_EGM)
 
 
 

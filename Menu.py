@@ -4,10 +4,25 @@ from tkcalendar import Calendar
 from tkinter import messagebox
 from datetime import timedelta
 import tkcalendar
+from EGM import validat
+
+#validation
+def validation():
+    EGM=CheckVar2.get()
+    if EGM==1:
+        msg = 'EGM is checked'
+        messagebox.showinfo('message', msg)
+        validat(dates)
+
+
+
+
+
+
 
 
 #input the week name
-global dates
+
 window = Tk()
 
 window.title("Welcome to Data Collection")
@@ -59,7 +74,7 @@ def date_range(start, stop):
     #     dates.append(day)
     dates = [x.strftime('%Y-%m-%d') for x in dates]
     if dates:
-        print(dates) # Print it, or even make it global to access it outside this
+        return # Print it, or even make it global to access it outside this
     else:
         print('Make sure the end date is later than start date')
 
@@ -99,7 +114,7 @@ Button(window, text='Find range', command=lambda: [date_range(date1.get_date(), 
 
 # cal_Button=Button(window, text="Get Date",font = ('calibre',10,'bold'),command=grad_date)
 btn_refresh = Button(window, text="Avilability of Data",font = ('calibre',25,'bold'))
-btn = Button(window, text="Submit",font = ('calibre',25,'bold'))
+btn = Button(window, text="Submit",font = ('calibre',25,'bold'),command=validation)
 btn2=Button(window, text="Quit",font = ('calibre',25,'bold'),command=window.destroy)
 
 # cal_Button.place(x=700, y=550,width=100)
