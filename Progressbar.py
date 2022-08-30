@@ -9,15 +9,15 @@ root = Tk()
 # Progress bar widget
 progress = Progressbar(root, orient = HORIZONTAL,
 			length = 100, mode = 'determinate')
-
+def step():
+	progress.start(100)
 # Function responsible for the updation
 # of the progress bar value
-def bar(x):
-	progress['value']=x
+def bar():
 
 	progress['value'] = 50
 	root.update_idletasks()
-	time.sleep(100)
+	time.sleep(1)
 
 	progress['value'] = 40
 	root.update_idletasks()
@@ -40,7 +40,7 @@ progress.pack(pady = 10)
 
 # This button will initialize
 # the progress bar
-Button(root, text = 'Start', command = bar).pack(pady = 10)
+Button(root, text = 'Start', command = step()).pack(pady = 10)
 
 # infinite loop
 mainloop()

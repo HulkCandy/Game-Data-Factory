@@ -8,6 +8,7 @@ from datetime import timedelta
 import tkcalendar
 from EGM import EGM_account,EGM_Players
 from EGM_Machine_Data_Inte import EGM_inte_machinedata
+from EGM_Players_Data_inte import EGM_inte_Playerdata
 
 
 
@@ -24,13 +25,13 @@ def validation():
         EGM_account(dates)
         msg = 'EGM Account data is done'
         messagebox.showinfo('message', msg)
-        bar(60)
+        bar(40)
         msg = 'EGM Player data is processing......'
         messagebox.showinfo('message', msg)
         EGM_Players(dates)
         msg = 'EGM Account Player is done'
         messagebox.showinfo('message', msg)
-        bar(80)
+        bar(60)
         msg = 'EGM data is integrating......'
         messagebox.showinfo('message', msg)
         msg = 'EGM floor analysis data is integrating......'
@@ -38,7 +39,13 @@ def validation():
         EGM_inte_machinedata()
         msg = 'EGM floor analysis data is done.'
         messagebox.showinfo('message', msg)
+        bar(80)
+        msg = 'EGM Loyal data is intergrating......'
+        messagebox.showinfo('message', msg)
+        EGM_inte_Playerdata()
         bar(100)
+        msg = 'EGM all Completed'
+        messagebox.showinfo('message', msg)
         # msg = 'EGM VLD data is done......'
         # messagebox.showinfo('message', msg)
         end = time.time()
