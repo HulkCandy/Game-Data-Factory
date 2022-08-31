@@ -1,7 +1,6 @@
 import openpyxl as xl
 import pandas as pd
-import xlwings as xw
-import time
+from openpyxl import load_workbook
 
 
 def EGM_inte_Playerdata():
@@ -11,15 +10,14 @@ def EGM_inte_Playerdata():
     all_data = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all\EGM - Loyalty Data.txt'
     player_temp_txt = r'C:\Users\ALiu\Desktop\Andy\16. Projects\Application\EGM-TEST\EGM\test all\Player_temp.txt'
 
-    # load template without opening
-    with xw.App(visible=False) as app:
-        book = xw.Book(EGM_TEMPLATE)
+    template = load_workbook('EGM_TEMPLATE')
+    temp_ws = template.get_sheet_by_name('Player Data - Source')
+    data = []
+    for row in temp_ws.values:
+        data.append([item for item in row])
+    df = pd.DataFrame(data[2:], columns=data[1])
 
-        # Do some stuff e.g.
-        time.sleep(2)
-        book.save()
-        book.close()
-    # load template without opening
+
     Source_player_sheet = pd.read_excel(EGM_TEMPLATE,sheet_name='Player Data - Source')
     player_sheet=pd.read_excel(EGM_TEMPLATE,sheet_name='Loyalty Data - Report')
     Uncarded_sheet = pd.read_excel(EGM_TEMPLATE, sheet_name='Uncarded Data - Report')
