@@ -192,6 +192,9 @@ print(OPTIONS)
 
 def callback(selection):
     print(selection)
+    selection=str(selection)
+    msg = 'are you sure the week is '+selection+ "??"
+    messagebox.showinfo('message', msg)
 
 variable = StringVar(window)
 variable.set(OPTIONS[0]) # default value
