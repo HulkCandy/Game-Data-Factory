@@ -9,7 +9,7 @@ import tkcalendar
 from EGM import EGM_account,EGM_Players
 from EGM_Machine_Data_Inte import EGM_inte_machinedata
 from EGM_Players_Data_inte import EGM_inte_Playerdata
-
+import random
 
 
 #validation
@@ -180,6 +180,35 @@ Button(window, text='Find range', command=lambda: [date_range(date1.get_date(), 
 #                day=14,date_pattern="dd/mm/yyyy")
 # cal.place(x=600, y=250,width=300)
 #
+# design week input
+
+OPTIONS = [] #etc
+
+for i in range(1,54):
+    OPTIONS.append(i)
+
+print(OPTIONS)
+
+
+def callback(selection):
+    print(selection)
+
+variable = StringVar(window)
+variable.set(OPTIONS[0]) # default value
+
+w = OptionMenu(window, variable,*OPTIONS,command=callback)
+selection=variable.get()
+# print(selection)
+
+w.place(x=600, y=350,width=150)
+
+var1 = StringVar()
+label = Label(window, textvariable=var1,font = ('calibre',10,'bold'))
+var1.set("Week input:")
+
+label.place(x=600, y=300,width=150)
+
+
 
 
 
